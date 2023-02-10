@@ -40,8 +40,8 @@ public class AnimalCountService<A extends Animal, T extends Rule<A>, R extends A
             for (AnimalDtoRequest animal : countAnimalsDtoRequest.getAnimals()) {
                 animals.add(builder.buildAnimal((R) animal));
             }
-            for (String question : countAnimalsDtoRequest.getTextToCountingRule().keySet()) {
-                output.add(question + dataProcessor.count(animals, (T) mapRuleDtoRequestToRule(countAnimalsDtoRequest.getTextToCountingRule().get(question))));
+            for (String question : countAnimalsDtoRequest.getQuestionToCountingRule().keySet()) {
+                output.add(question + dataProcessor.count(animals, (T) mapRuleDtoRequestToRule(countAnimalsDtoRequest.getQuestionToCountingRule().get(question))));
             }
         } catch (AccountingSystemException e) {
             output.add(e.getErrorCode().getMessage());

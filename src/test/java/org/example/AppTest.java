@@ -164,6 +164,8 @@ public class AppTest {
         Assert.assertEquals(expected2, actual.get(0));
         Assert.assertEquals(expected1, actual.get(1));
 
+        System.out.println(json);
+
 
     }
 
