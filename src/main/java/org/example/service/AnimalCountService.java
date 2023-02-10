@@ -35,7 +35,7 @@ public class AnimalCountService<A extends Animal, T extends Rule<A>, R extends A
     public List<String> getCountingResults(String json) {
         List<String> output = new ArrayList<>();
         try {
-            CountAnimalsDtoRequest countAnimalsDtoRequest = getInstanceFromJson(json,CountAnimalsDtoRequest.class);
+            CountAnimalsDtoRequest countAnimalsDtoRequest = getInstanceFromJson(json, CountAnimalsDtoRequest.class);
             List<A> animals = new ArrayList<>(countAnimalsDtoRequest.getAnimals().size());
             for (AnimalDtoRequest animal : countAnimalsDtoRequest.getAnimals()) {
                 animals.add(builder.buildAnimal((R) animal));
@@ -44,7 +44,7 @@ public class AnimalCountService<A extends Animal, T extends Rule<A>, R extends A
                 output.add(question + dataProcessor.count(animals, (T) mapRuleDtoRequestToRule(countAnimalsDtoRequest.getTextToCountingRule().get(question))));
             }
         } catch (AccountingSystemException e) {
-            output.add(e.getMessage());
+            output.add(e.getErrorCode().getMessage());
         }
         return output;
     }

@@ -20,11 +20,8 @@ public class AccountingSystem<A extends Animal, T extends Rule<A>, R extends Ani
     }
 
     public List<String> count(String json) {
-        List<String> results = animalCountService.getCountingResults(json);
-        for (String item : results) {
-            System.out.println(item);
-        }
-        return results;
+
+        return animalCountService.getCountingResults(json);
     }
 
 

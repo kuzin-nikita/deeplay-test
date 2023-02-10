@@ -15,6 +15,9 @@ public class Utils {
 
     public static <T> T getInstanceFromJson(String json, Class<T> tClass) throws AccountingSystemException {
         try {
+            if (json == null || json.equals("")) {
+                throw new AccountingSystemException(ErrorCode.WRONG_JSON);
+            }
             return gson.fromJson(json, tClass);
         } catch (JsonSyntaxException e) {
             throw new AccountingSystemException(ErrorCode.WRONG_JSON);

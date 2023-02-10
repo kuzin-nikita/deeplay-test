@@ -11,4 +11,6 @@ public class AccountingSystemException extends Exception {
     public ErrorCode getErrorCode() {
         return errorCode;
     }
+
+
 }

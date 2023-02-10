@@ -13,7 +13,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
 
         AccountingSystem<Animal, Rule<Animal>, AnimalDtoRequest> accountingSystem = new AccountingSystem<>();
 
@@ -86,8 +85,12 @@ public class App
 
         String json = gson.toJson(request);
 
-        accountingSystem.count(json);
 
+        List<String> results = accountingSystem.count(json);
+
+        for (String item : results) {
+            System.out.println(item);
+        }
 
 
 
